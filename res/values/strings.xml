@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">FishNotes</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main_list">Fish Notes</string>
+    <string name="ok_label">OK</string>
+    <string name="title_activity_edit_note">EditNoteActivity</string>
+    <string name="locationLabel">Location:</string>
+    <string name="depthLabel">Depth:</string>
+    <string name="descriptionLabel">Description</string>
+    <!--
+    <string name="okButtonText">OK</string>
+    <string name="cancelButtonText">Cancel</string>
+    -->
+    <string name="saveButtonText">Save</string>
+    <string name="title_activity_map">Fish Notes</string>
+    <string name="title_activity_test">TestActivity</string>
+
+</resources>
