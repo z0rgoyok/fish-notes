@@ -153,7 +153,8 @@ public class EditNoteActivity extends Activity {
     protected void setCurrentLocation(Location location) {
         this.location = location;
         String text = location == null ? "" : 
-            "" + location.getLatitude() + " x " + location.getLongitude();
+            "" + location.getLatitude() + " x " + location.getLongitude()
+            + " : " + location.getAccuracy();
         locationView.setText(text);
         updateSaveButtonStatus();
     }
