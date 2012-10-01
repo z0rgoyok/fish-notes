@@ -118,7 +118,7 @@ public class MapActivity extends Activity {
 
         dbh = new DBHelper(this);
         final NotesAdapter notesAdapter = new NotesAdapter(this, dbh);
-        final ArrayList items = new ArrayList(); 
+        final ArrayList<OverlayItem> items = new ArrayList<OverlayItem>(); 
         List<Note> notes = notesAdapter.getLastItems(Integer.MAX_VALUE);
         
         final Note lastNote = notes.get(0);
@@ -132,43 +132,17 @@ public class MapActivity extends Activity {
                     "" + note.getDepth(), 
                     note.getNote(), 
                     note.getPoint());
-            //final DrawableNote drawableNote = new DrawableNote(this, note);
-            //Drawable drawableNote = this.getResources().getDrawable(R.drawable.ic_launcher);
-            Drawable drawableNote = new Drawable() {
-                {
-                    setBounds(0, 0, 20, 20);
-                }
-                @Override
-                public void setColorFilter(ColorFilter cf) {
-                }
-                
-                @Override
-                public void setAlpha(int alpha) {
-                }
-                
-                @Override
-                public int getOpacity() {
-                    return 0;
-                }
-                
-                @Override
-                public void draw(Canvas canvas) {
-                    Paint paint = new Paint();
-                    paint.setStyle(Paint.Style.FILL);
-                    paint.setColor(Color.RED);
-                    canvas.drawCircle(0, 0, 5, paint);
-                }
-                
-            };
+            final DrawableNote drawableNote = new DrawableNote(this, note);
             int w = drawableNote.getIntrinsicWidth();
             int h = drawableNote.getIntrinsicHeight();
-            Log.d("x,y", "" + w + "," + h);
+            //Log.d("x,y", "" + w + "," + h);
             drawableNote.setBounds(-w / 2, -h, w / 2, 0);
             overlayItem.setMarker(drawableNote);
             items.add(overlayItem);
         }
         
-        ItemizedIconOverlay myLocationOverlay = new ItemizedIconOverlay(this, items, null);          
+        ItemizedIconOverlay<OverlayItem> myLocationOverlay 
+            = new ItemizedIconOverlay<OverlayItem>(this, items, null);          
         
         mMap.getOverlays().add(myLocationOverlay);
     }
